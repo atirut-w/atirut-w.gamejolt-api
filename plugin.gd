@@ -17,8 +17,12 @@ func _enter_tree() -> void:
 			"name": key,
 			"type": typeof(default_settings[key]),
 		})
+	
+	add_autoload_singleton("GameJolt", "res://addons/atirut-w.game_jolt_api/api.gd")
 
 
 func _exit_tree() -> void:
 	for key in default_settings.keys():
 		ProjectSettings.set_setting(key, null)
+	
+	remove_autoload_singleton("GameJolt")
